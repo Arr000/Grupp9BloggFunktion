@@ -113,9 +113,11 @@ public class RemoveResearchPost extends javax.swing.JFrame {
         var researchName = researchRow.toString();
         
         _postService.deleteResearchPost(researchName);
-        //tblForskningsInlagg.removeAll();
+        
         clearTable();
         initTable(); 
+        
+        JOptionPane.showMessageDialog(null, "Ditt inlägg har tagitsbort");
        
         
     }//GEN-LAST:event_btnDeleteActionPerformed
