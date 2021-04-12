@@ -131,6 +131,11 @@ public class BloggService implements IMeeting, IEmployee, IPost{
       var meetings = _meetingdb.getMeetingByDate(date);
       return meetings;
     }
+    
+    @Override
+    public void deleteResearchPost(String rubrik){
+        _postdb.deleteResearchPost(rubrik);
+    }
 
   
 
