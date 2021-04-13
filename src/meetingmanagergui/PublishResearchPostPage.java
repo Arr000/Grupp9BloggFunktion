@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package meetingmanagergui;
 
 import BloggManager.BloggService;
@@ -21,9 +17,6 @@ import org.firebirdsql.jdbc.FBEscapedFunctionHelper;
  */
 public class PublishResearchPostPage extends javax.swing.JFrame {
 
-    // i fälten har jag en employee, som är som en behållare. där vi lägger in objektet employee i denna från konstruktorn
-    // sedan har vi två services, där ena använder sig av interface Iemployee, och den andra från IPost
-    // de har nu betendena från interface och vi kan anropa dessa i våra metoder
     private Employee employee;
     private IEmployee _employeService = new BloggService(new EmployeeDB());
     private IPost _postService = new BloggService(new PostDB());
@@ -122,10 +115,7 @@ public class PublishResearchPostPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-// hämtar värdena från gränssnittet och lägger in dom i lokala variablar
-    // har en validering om inläggets längd är över 500 så ska vi få felmeddelande och sedan stoppar vi metoden med en return
-    // så den inte fortsätter med resten av funktionerna
-    // är den mindre än 500 ord så ropar vi på vår metod och lägger in variablerna.
+
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         
         var maxid = _postService.getMaxIdResearchPost();
@@ -136,7 +126,6 @@ public class PublishResearchPostPage extends javax.swing.JFrame {
         if(inlagg.length() > 500)
         {
             JOptionPane.showMessageDialog(null, "Max 500 ord!");
-            return;
         }
         
         _postService.addResearchPost(maxid, rubrik, inlagg, username);

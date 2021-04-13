@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,11 +20,6 @@ public interface IPost {
     
     public ArrayList<ForskningsInlagg> getAllResearchPosts();
     
-    public void addInformalPost(int id, String rubrik, String inlagg, String username, String bild);
-    
-    public int getMaxIDInformalPost();
-    
-    
-    
+    public void deleteResearchPost(String rubrik);
     
 }
