@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -79,29 +80,16 @@ public class PostDB implements IPostDal{
         }
             return null;
     }   
-
+    
     @Override
-    public void saveInformalPost(int id, String rubrik, String inlagg, String username, String bild) {
-        try {
+    public void deleteResearchPost(String rubrik){
+        try{
             DatabasAcess.Connect();
-            var informalpostquery = "INSERT INTO INFORMELLAINLAGG (ID,RUBRIK,INLAGG,USERNAME,BILD) VALUES( "+ id + ","+ DatabasAcess.MakeDBString(rubrik)+","+DatabasAcess.MakeDBString(inlagg)+","+DatabasAcess.MakeDBString(username)+","+DatabasAcess.MakeDBString(bild)+")";
-            DatabasAcess.getidb().insert(informalpostquery);
-        } catch (InfException ex) {
-            Logger.getLogger(PostDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public int getMaxIDInformalPost() {
-        try {
-            DatabasAcess.Connect();
-            var getMaxIdQuery = "SELECT MAX(ID) FROM INFORMELLAINLAGG";
-            var result = DatabasAcess.getidb().fetchSingle(getMaxIdQuery);
+            var dbidb = DatabasAcess.getidb();
+            dbidb.delete("DELETE FROM FORSKNINGSINLAGG WHERE RUBRIK = '" + rubrik + "'" );
             
-            return Integer.parseInt(result);
-          
-        } catch (InfException ex) {
-            Logger.getLogger(MeetingDB.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InfException ex){
+        Logger.getLogger(PostDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
     }
 }
