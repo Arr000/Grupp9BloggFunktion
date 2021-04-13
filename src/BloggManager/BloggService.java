@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,7 @@
  */
 package BloggManager;
 
+import DB.DatabasAcess;
 import Models.Employee;
 import Models.ForskningsInlagg;
 import Models.IEmployee;
@@ -133,8 +135,23 @@ public class BloggService implements IMeeting, IEmployee, IPost{
     }
 
     @Override
+    public void addInformalPost(int id, String rubrik, String inlagg, String username, String bild) {
+       
+        _postdb.saveInformalPost(id, rubrik, inlagg, username, bild);
+    }
+
+    @Override
+    public int getMaxIDInformalPost(){
+      var maxid = _postdb.getMaxIDInformalPost();
+      return maxid + 1;
+    }
+    
+    
+    @Override
     public void deleteResearchPost(String rubrik){
         _postdb.deleteResearchPost(rubrik);
     }
+
+  
 
 }
