@@ -9,7 +9,7 @@ package Models;
  *
  * @author nene5
  */
-//gabrielnyy
+//gabrielnyyy
 public class ForskningsInlagg {
     
     private int Id;
